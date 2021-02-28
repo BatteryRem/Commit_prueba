@@ -1,0 +1,45 @@
+import os
+import sys
+
+class Nodo(object):
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class lista_circular(object):
+    def __init__(self):
+        self.cabeza = None
+
+    def vacio(self):
+        return self.cabeza is None
+    def longi(self):
+        actu = self.cabeza
+        count = 0
+        while actu is not None:
+            count += 1
+            if actu.next == self.cabeza:
+                break
+            else:
+                actu =actu.next
+        return count
+
+    def recorrido(self):
+        if self.vacio():
+            return
+        actu = self.cabeza
+        print(actu.data)
+        while actu.next != self.head:
+            actu = actu.next
+            print(actu.data)
+    def agregar_ini(self,data):
+        nodo = Nodo(data)
+        if self.vacio():
+            self.cabeza = nodo
+            nodo.next = self.cabeza
+        else:
+            actu = self.cabeza
+            while actu.next is not self.head:
+                actu = actu.next
+            actu.next = nodo
+            nodo.next = self.cabeza
+            self.cabeza = nodo
